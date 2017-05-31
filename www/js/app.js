@@ -27,17 +27,17 @@ angular.module('starter', ['ionic'])
     .state('index', {
     url: '/index',
     templateUrl: 'templates/menu.html',
-    //controller: 'AppCtrl'
+   controller: 'AppCtrl'
   })
 	  .state('login', {
     url: '/login',
     templateUrl: 'templates/login.html',
-    //controller: 'AppCtrl'
+    controller: 'AppCtrl'
 
   })
-	  .state('History1', {
-    url: '/History1',
-    templateUrl: 'templates/History1.html',
+	  .state('History', {
+    url: '/History',
+    templateUrl: 'templates/History.html',
     //controller: 'AppCtrl'
   })
       .state('Home', {
@@ -51,4 +51,25 @@ angular.module('starter', ['ionic'])
     //controller: 'AppCtrl'
   })
   $urlRouterProvider.otherwise('/login');
-});
+})
+.controller('AppCtrl',function ($scope,$state,$ionicPopup){
+
+	$scope.login={};
+	var user="admin";
+	var password="123456";
+
+	
+	$scope.doLogin=function(){
+		console.log("alert");
+		console.log(password);
+		console.log($scope.login.username);
+        console.log($scope.login.password);
+
+		$ionicPopup.alert({
+			title:'ล็อกอิน',
+				template:'ไม่สามารถล็อกอินได้ กรุณาตรวจสอบ'
+		})
+
+        $state.go("History")
+	}
+})
